@@ -1112,6 +1112,7 @@
                 startSystemScheduler();
                 startAnimationEngine();
             }
+            window.postMessage({ source: "eco-gochi-page", type: "REQUEST_INITIAL_DATA" }, "*");
         };
     </script>
 </body>
