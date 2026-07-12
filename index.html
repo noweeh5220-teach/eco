@@ -1022,14 +1022,30 @@
         }
 
         // 8. 포인트 연동식 실시간 1초 마스터 스케줄러 클록 (🌟 1초 간격 상시 자동 세이브 추가)
+        // 📱 익스텐션 미연결(패드/모바일) 대응 1초 통합 마스터 스케줄러
         function startSystemScheduler() {
             if (mainScheduler) clearInterval(mainScheduler);
 
             mainScheduler = setInterval(() => {
                 if (isGameOver) return;
-                if (!hasConnected) return;
 
-                if (!extensionDarkMode) { hp -= (2 / 60); }
+                // 익스텐션이 없는 환경(아이패드/핸드폰 등)일 경우 가상 시뮬레이션 작동!
+                if (!hasConnected) {
+                    // 기기 자체의 다크모드 설정을 실시간으로 따옴
+                    extensionDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    // 테스트를 위해 좀비 탭 2개 기본 세팅 고정
+                    currentZombieCount = 2; 
+                    
+                    zombieCountTextEl.textContent = `${currentZombieCount}개 (모바일 시뮬레이션)`;
+                    themeTextEl.textContent = extensionDarkMode ? "DARK 🌙" : "LIGHT ☀️";
+                    systemModeEl.textContent = "테스트 모드 📱";
+                    systemModeEl.style.backgroundColor = "#3498db";
+                }
+
+                // --- 데이터 기반 실시간 HP 계산 엔진 ---
+                if (!extensionDarkMode) { 
+                    hp -= (2 / 60); // 라이트 모드 패널티 (분당 -2)
+                }
 
                 if (currentZombieCount === 5) {
                     hp -= (5 / 60);
@@ -1038,17 +1054,19 @@
                     hp -= ((5 + extraTabs) / 60);
                 }
 
+                // 좀비 탭이 0개이고 다크모드일 때만 자동 자연 치유 회복 보상
                 if (currentZombieCount === 0 && extensionDarkMode) {
                     if (hp < 100) { hp += (3 / 60); }
                 }
 
+                // 건강함 상태 유지 시 보너스 포인트 지급 마일리지
                 if (hp >= 80) {
                     ecoPoints += 1;
                 }
 
                 syncAssetUI();
                 renderGame();
-                saveGameData(); // 🌟 실시간 1초 주기 데이터 스토리지 커밋
+                saveGameData(); 
             }, 1000);
         }
 
