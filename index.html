@@ -14,7 +14,143 @@
             --lcd-bg: #e8f8f5;          
             --text-color: #2c3e50;      
         }
+        /* 📱 핸드폰/패드 화면에서 테두리가 삐져나가는 버그를 잡은 모바일 반응형 코드 */
+        @media (max-width: 768px) {
+            body {
+                padding: 1vh 2vw;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
+            .game-container {
+                width: 100%;
+                gap: 10px;
+            }
+            
+            /* 큰 테두리 (본체) 세팅 */
+            .retro-console {
+                grid-template-columns: 1fr; 
+                padding: 10px;
+                border-width: 6px; 
+                border-radius: 20px;
+                width: 95vw;       
+                height: auto;      /* 삐져나가지 않도록 높이를 자동 조절로 변경! */
+                min-height: 75vh;  
+                max-height: 85vh;
+                display: flex;     
+                flex-direction: column;
+            }
+            
+            .left-controller, .right-controller {
+                display: none !important; 
+            }
+
+            /* 🔥 작은 테두리 1 (회색 베젤) - 패딩 탈출 방지 강제 구속 */
+            .screen-bezel {
+                width: 100% !important;
+                box-sizing: border-box; 
+                padding: 10px !important;
+                border-radius: 15px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* 🔥 작은 테두리 2 (LCD 게임 화면) - 패딩 탈출 방지 강제 구속 */
+            .game-screen-wrapper {
+                width: 100% !important;
+                box-sizing: border-box; 
+                padding: 12px !important;
+                border-width: 3px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            /* 내부 대시보드 텍스트 조밀화 */
+            .dashboard {
+                padding: 8px 12px;
+                font-size: 0.8rem; 
+                line-height: 1.4;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .status-row {
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            /* 캐릭터 및 게임 공간 스케일 축소 */
+            .character-space {
+                padding-bottom: 5px;
+                flex: 1;
+                min-height: 130px; 
+            }
+            .character-img {
+                width: 110px; 
+                height: 110px;
+            }
+
+            /* 대화창 크기 다운 */
+            .dialogue-box {
+                font-size: 0.9rem;
+                min-height: 44px;
+                padding: 6px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* 게임 오버 창 크기 보정 */
+            .game-over-overlay {
+                padding: 15px;
+                text-align: center;
+            }
+            .game-over-overlay h2 {
+                font-size: 2rem;
+            }
+            
+            /* 상점 및 모달 창 터짐 방지 */
+            .info-modal-content {
+                width: 92%;
+                padding: 12px;
+                max-height: 85vh;
+                overflow-y: auto;
+            }
+            .info-table {
+                font-size: 0.75rem;
+            }
+            .info-table th, .info-table td {
+                padding: 5px 6px;
+            }
+            .shop-item-card {
+                padding: 8px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .shop-buy-btn {
+                width: 100%;
+                padding: 6px;
+            }
+            
+            /* 하단 버튼 배치 최적화 */
+            .bottom-utility-area {
+                gap: 8px;
+                width: 95vw;
+            }
+            .guide-trigger-btn, .shop-trigger-btn {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+                flex: 1;
+                justify-content: center;
+            }
+        }
+        
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #2f3640;
