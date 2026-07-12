@@ -947,9 +947,10 @@
 
         // 6. 프레임 비주얼 코어 렌더링 맵
         function renderGame() {
-            hp = Math.max(0, Math.min(100, hp));
-            hpTextEl.textContent = `${Math.floor(hp)} / 100`;
-            hpBarEl.style.width = `${hp}%`;
+    hp = Math.max(0, Math.min(100, hp));
+    hpTextEl.textContent = `${hp.toFixed(2)} / 100`;
+    hpBarEl.style.width = `${hp}%`;
+}
 
             let bgUrl = 'bg_clean.png';
             let dialogue = '';
