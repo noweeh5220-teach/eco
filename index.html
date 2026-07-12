@@ -479,27 +479,27 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>☀️ 라이트 모드 패널티</td>
+                                        <td>라이트 모드 패널티</td>
                                         <td>시스템 테마 브라우저 구동</td>
                                         <td><span class="badge-minus">분당 -2 HP</span></td>
                                     </tr>
                                     <tr>
-                                        <td>🧟 좀비 탭 안전 구역</td>
+                                        <td>좀비 탭 0단계</td>
                                         <td>누적 백그라운드 탭 0 ~ 4개</td>
                                         <td><span class="badge-safe">패널티 없음</span></td>
                                     </tr>
                                     <tr>
-                                        <td>🧟 좀비 탭 1차 패널티</td>
-                                        <td>누적 백그라운드 탭 5개 인입</td>
+                                        <td>좀비 탭 1단계</td>
+                                        <td>누적 백그라운드 탭 5개 </td>
                                         <td><span class="badge-minus">분당 -5 HP</span></td>
                                     </tr>
                                     <tr>
-                                        <td>🧟 좀비 탭 임계점 오버</td>
+                                        <td> 좀비 탭 2단계</td>
                                         <td>누적 백그라운드 탭 6개 이상</td>
                                         <td><span class="badge-minus">분당 -5 + α HP</span></td>
                                     </tr>
                                     <tr>
-                                        <td>🌱 탄소 제로 회복 보상</td>
+                                        <td>탄소 제로 회복 보상</td>
                                         <td>좀비 탭 0개 및 다크 모드 활성</td>
                                         <td><span class="badge-plus">분당 +3 HP</span></td>
                                     </tr>
@@ -511,32 +511,32 @@
                     <div class="info-modal-overlay" id="shopModal">
                         <div class="info-modal-content">
                             <div class="info-modal-header">
-                                <div class="info-modal-title">🛒 에코 레트로 마켓</div>
+                                <div class="info-modal-title">마켓</div>
                                 <button class="info-close-btn" onclick="closeShopModal()">X</button>
                             </div>
                             <div style="display:flex; justify-content:space-between; font-size: 1rem; font-weight: bold; margin-bottom: 12px; background:#f1f2f6; padding:10px 14px; border-radius:6px;">
-                                <span style="color:#2980b9;">💰 보유 포인트: <span id="shopPointText">0</span> P</span>
-                                <span style="color:#9b59b6;">🪶 깃털 소지량: <span id="shopFeatherText">0</span>개</span>
+                                <span style="color:#2980b9;">보유 포인트: <span id="shopPointText">0</span> P</span>
+                                <span style="color:#9b59b6;">깃털 소지량: <span id="shopFeatherText">0</span>개</span>
                             </div>
                             <div class="shop-item-container">
                                 <div class="shop-item-card">
                                     <div class="shop-item-info">
-                                        <div class="shop-item-name">🧪 포션 <span style="color:#e67e22; font-size:0.95rem;">[15 P]</span></div>
+                                        <div class="shop-item-name">포션 <span style="color:#e67e22; font-size:0.95rem;">[15 P]</span></div>
                                         <div class="shop-item-desc">에코 에너지를 수급하여 즉시 HP를 30 회복합니다.</div>
                                     </div>
                                     <button class="shop-buy-btn" onclick="buyPotion()">사용하기</button>
                                 </div>
                                 <div class="shop-item-card">
                                     <div class="shop-item-info">
-                                        <div class="shop-item-name">🪶 부활 깃털 <span style="color:#e67e22; font-size:0.95rem;">[40 P]</span></div>
+                                        <div class="shop-item-name">부활용 깃털 <span style="color:#e67e22; font-size:0.95rem;">[40 P]</span></div>
                                         <div class="shop-item-desc">인벤토리에 보존되며, 예기치 못한 사망 시 부활에 소모됩니다.</div>
                                     </div>
                                     <button class="shop-buy-btn" style="background:#9b59b6;" onclick="buyFeather()">구매하기</button>
                                 </div>
                                 <div class="shop-item-card">
                                     <div class="shop-item-info">
-                                        <div class="shop-item-name">🍎 사과 <span style="color:#e67e22; font-size:0.95rem;">[5 P]</span></div>
-                                        <div class="shop-item-desc">맛있는 간식을 급여하여 7초간 기분을 최고조로 만듭니다.</div>
+                                        <div class="shop-item-name">사과 <span style="color:#e67e22; font-size:0.95rem;">[5 P]</span></div>
+                                        <div class="shop-item-desc">맛있는 간식을 급여하여 일정량의 HP를 회복합니다.</div>
                                     </div>
                                     <button class="shop-buy-btn" style="background:#ff7675;" onclick="buyApple()">먹이기</button>
                                 </div>
@@ -546,16 +546,15 @@
 
                     <div class="dashboard">
                         <div class="status-row">
-                            <span>테마 상태: <span id="themeText">연결 대기 중...⏳</span></span>
+                            <span>테마 상태: <span id="themeText">연결 대기 중...</span></span>
                             <span id="systemMode" class="mode-badge">EXT 연결 대기</span>
                         </div>
                         <div class="status-row" style="margin-top: 4px;">
                             <span>현재 좀비 탭 개수: <span id="zombieCountText" style="color:#2c3e50; font-weight: 900;">0개</span></span>
-                            <span style="color:#2980b9;">💰 포인트: <span id="dashboardPointText" style="font-weight:900;">0</span> P</span>
+                            <span style="color:#2980b9;">포인트: <span id="dashboardPointText" style="font-weight:900;">0</span> P</span>
                         </div>
                         <div class="status-row" style="margin-top: 4px; font-size: 0.9rem; color:#7f8c8d;">
-                            <span>인벤토리 현황:</span>
-                            <span style="color:#9b59b6; font-weight:bold;">🪶 소지량: <span id="dashboardFeatherText">0</span>개</span>
+                            <span style="color:#9b59b6; font-weight:bold;">깃털 소지량: <span id="dashboardFeatherText">0</span>개</span>
                         </div>
                         <div class="hp-container">
                             <div class="status-row title-left-align">
@@ -573,7 +572,7 @@
                     </div>
 
                     <div class="dialogue-box" id="dialogueBox">
-                        익스텐션 데이터 연결 대기 중...🌲
+                        익스텐션 데이터 연결 대기 중...
                     </div>
                 </div>
             </div>
@@ -586,8 +585,8 @@
         </div>
 
         <div class="bottom-utility-area">
-            <button class="guide-trigger-btn" onclick="openGuideModal()">📖 패널티 안내서 보기</button>
-            <button class="shop-trigger-btn" onclick="openShopModal()">🛒 상점 열기</button>
+            <button class="guide-trigger-btn" onclick="openGuideModal()">패널티 안내서 보기</button>
+            <button class="shop-trigger-btn" onclick="openShopModal()"> 상점 열기</button>
         </div>
     </div>
 
@@ -693,7 +692,7 @@
                 
                 zombieCountTextEl.textContent = `${currentZombieCount}개`;
                 zombieCountTextEl.style.color = currentZombieCount >= 5 ? "#e74c3c" : "#2c3e50";
-                themeTextEl.textContent = extensionDarkMode ? "DARK 🌙" : "LIGHT ☀️";
+                themeTextEl.textContent = extensionDarkMode ? "DARK " : "LIGHT ";
             }
         });
 
@@ -727,12 +726,12 @@
             syncAssetUI();
             saveGameData(); // 즉시 세이브
             renderGame();
-            alert(`🧪 포션을 구매하여 ${petName}의 HP를 30 회복했습니다!`);
+            alert(`포션을 구매하여 ${petName}의 HP를 30 회복했습니다!`);
         }
 
         function buyFeather() {
             if (ecoPoints < 40) { // 기존 150 P -> 40 P 변경
-                alert("❌ 포인트를 더 모아야 합니다! (필요 수치: 40 P)");
+                alert("포인트를 더 모아야 합니다! (필요 수치: 40 P)");
                 return;
             }
             ecoPoints -= 40;
@@ -744,13 +743,13 @@
             if (isGameOver) {
                 checkOverlayFeatherStatus();
             }
-            alert(`🪶 부활 깃털을 1개 구매하여 인벤토리에 안전하게 저장했습니다.`);
+            alert(`부활 깃털을 1개 구매하여 인벤토리에 안전하게 저장했습니다.`);
         }
 
         function buyApple() {
             if (isGameOver) return;
             if (ecoPoints < 5) { // 기존 20 P -> 5 P 변경
-                alert("❌ 포인트를 더 모아야 합니다! (필요 수치: 5 P)");
+                alert("포인트를 더 모아야 합니다! (필요 수치: 5 P)");
                 return;
             }
             ecoPoints -= 5;
@@ -829,27 +828,27 @@
             } else if (isAppleBuffActive) {
                 currentStatusState = 'happy';
                 bgUrl = 'bg_clean.png';
-                dialogue = `🍎 아삭! 맛있는 사과를 먹은 ${petName}(이)가 대단히 행복해합니다! 🥳`;
+                dialogue = `맛있는 사과를 먹은 ${petName}(이)가 대단히 행복해합니다! `;
                 barColor = '#2ed573';
             } else if (hp < 40) {
                 currentStatusState = 'danger';
                 bgUrl = 'bg_desert.png';
-                dialogue = `${petName}(이)가 죽어가고 있어요! 얼른 브라우저를 구해주세요! 🌋`;
+                dialogue = `${petName}(이)가 죽어가고 있어요! 도와주세요!`;
                 barColor = '#ff5e57'; 
             } else if (hp < 80) {
                 currentStatusState = 'sick';
                 bgUrl = 'bg_withered.png';
-                dialogue = `${petName}(이)가 조금 아파요. 좀비 탭을 줄여주세요. 🍂`;
+                dialogue = `${petName}(이)가 조금 아파요! `;
                 barColor = '#ffa801'; 
             } else {
                 currentStatusState = 'happy';
                 bgUrl = 'bg_clean.png';
-                dialogue = `${petName}(이)가 아주 건강해요! 지구가 깨끗합니다. 🌲`;
+                dialogue = `${petName}(이)가 아주 건강해요! `;
                 barColor = '#2ed573';
             }
 
             if (!hasConnected) {
-                dialogue = "익스텐션 데이터 연결 대기 중...🌲";
+                dialogue = "익스텐션 데이터 연결 대기 중...";
             }
 
             gameScreenEl.style.backgroundImage = `url('${bgUrl}')`;
@@ -942,7 +941,7 @@
                 deathWarningTextEl.style.color = "#27ae60";
             } else {
                 overlayReviveBtnEl.disabled = true;
-                deathWarningTextEl.textContent = `⚠️ 남은 부활 깃털이 없습니다. 하단 [상점 열기] 버튼을 눌러 모아둔 포인트로 깃털을 즉시 수급하거나, 깃털과 포인트가 모두 없다면 영구 사망 처리됩니다.`;
+                deathWarningTextEl.textContent = `남은 부활 깃털이 없습니다. 하단 [상점 열기] 버튼을 눌러 모아둔 포인트로 깃털을 즉시 수급하거나, 깃털과 포인트가 모두 없다면 영구 사망 처리됩니다.`;
                 deathWarningTextEl.style.color = "#c0392b";
             }
         }
