@@ -850,6 +850,8 @@
                 zombieCountTextEl.textContent = `${currentZombieCount}개`;
                 zombieCountTextEl.style.color = currentZombieCount >= 5 ? "#e74c3c" : "#2c3e50";
                 themeTextEl.textContent = extensionDarkMode ? "DARK " : "LIGHT ";
+
+                renderGame();
             }
         });
 
