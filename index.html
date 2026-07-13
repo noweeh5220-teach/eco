@@ -741,6 +741,7 @@
         <div class="bottom-utility-area">
             <button class="guide-trigger-btn" onclick="openGuideModal()">패널티 안내서 보기</button>
             <button class="shop-trigger-btn" onclick="openShopModal()"> 상점 열기</button>
+            <button class="theme-toggle-btn" id="manualThemeBtn" onclick="toggleExtensionTheme()" style="padding: 14px 28px; color: #2c3e50; border: 3px solid #2c3e50; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; background-color: #a29bfe; box-shadow: 0 5px 0 #2c3e50; display: flex; align-items: center; gap: 6px;">테마 전환</button>
         </div>
     </div>
 
@@ -1054,7 +1055,7 @@
                 characterImgEl.src = charFrames.dead;
             }
         }
-
+        
         // 7. Ping-pong 프레임 왕복 기하 제어 장치
         function startAnimationEngine() {
             if (animationScheduler) clearInterval(animationScheduler);
@@ -1127,7 +1128,20 @@
             
             saveGameData(); 
         }
-
+        // 🌓 익스텐션 연동형 테마 강제 토글 함수
+    function toggleExtensionTheme() {
+        if (isGameOver) return;
+    
+    // 현재 상태의 반대값을 타겟으로 설정
+        const targetMode = !extensionDarkMode;
+    
+    // content.js가 받아볼 수 있도록 메시지 파이프라인 송신
+        window.postMessage({
+            source: "eco-gochi-page",
+            type: "COMMAND_TOGGLE_THEME",
+            requestedDarkMode: targetMode
+        }, "*");
+    }
         // 사망 상태 오버레이 버튼 인터페이스 검증 갱신 분기 함수
         function checkOverlayFeatherStatus() {
             const oldBtn = document.getElementById('dynamicForceResetBtn');
