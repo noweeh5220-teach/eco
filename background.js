@@ -88,3 +88,23 @@ chrome.runtime.onMessage.addListener((request) => {
 
 // 5초마다 한 번씩 강제로 탭 상태를 갱신해서 다마고치로 전송
 setInterval(broadcastNavData, 5000);
+
+// 🌓 웹사이트 버튼 조작 신호를 받아서 테마를 강제로 오버라이드
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "TOGGLE_THEME_OVERRIDE") {
+        // 현재 활성화된 탭을 찾아서 바뀐 테마 상태를 즉시 강제 주입
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            if (tabs.length > 0) {
+                chrome.tabs.sendMessage(tabs[0].id, {
+                    action: "UPDATE_STATUS",
+                    zombieTabCount: request.zombieCount || 0,
+                    overrideTheme: request.requestedDarkMode
+                }, () => {
+                    if (chrome.runtime.lastError) return;
+                });
+            }
+        });
+        sendResponse({ status: "success" });
+    }
+    return true;
+});
