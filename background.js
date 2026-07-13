@@ -1,4 +1,5 @@
 let tabLastAccessed = {};
+let themeOverride = null;
 
 chrome.runtime.onInstalled.addListener(async () => {
     const allTabs = await chrome.tabs.query({});
@@ -23,7 +24,18 @@ chrome.tabs.onCreated.addListener((tab) => {
     tabLastAccessed[tab.id] = Date.now();
     broadcastNavData();
 });
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "TOGGLE_THEME_OVERRIDE") {
+        themeOverride = request.requestedDarkMode;
+        vroadcastNavData();
+        sendResponse({ status: "success"});
 
+        if (resquest.action === "THEME_CHANGED") {
+            broadcastNavData();
+            sendResponse({ status:"ok"});
+        }
+        return true;
+    });
 // 좀비 탭 계산 함수
 async function getZombieTabCount() {
     const allTabs = await chrome.tabs.query({});
@@ -53,10 +65,13 @@ async function broadcastNavData() {
 
     const activeTab = activeTabs[0];
     if (activeTab.url && (activeTab.url.startsWith('http') || activeTab.url.startsWith('file'))) {
+        
+        let currentIsDark = themeOverride !== null ? themeOverride : false;
         try {
             chrome.tabs.sendMessage(activeTab.id, {
                 action: "UPDATE_STATUS",
                 zombieTabCount: zombieCount
+                isDarkMode: currentIsDark
             }, (response) => {
                 if (chrome.runtime.lastError) return;
             });
