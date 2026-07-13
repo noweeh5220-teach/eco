@@ -15,5 +15,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // 브라우저 테마가 라이트<->다크로 바뀔 때 실시간 감지
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    chrome.runtime.sendMessage({ action: "THEME_CHANGED" });
+    try {
+        chrome.runtime.sendMessage({ action: "THEME_CHANGED" }, (response) => {
+            if (chrome.runtime.lastError) return;
+        });
+    } catch (err) {
+    }
 });
