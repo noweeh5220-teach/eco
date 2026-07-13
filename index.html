@@ -203,14 +203,47 @@
                 max-width: 1350px;
             }
             .guide-trigger-btn, .shop-trigger-btn, .theme-toggle-btn{
-                padding: 8px 10px;
-                font-size: 0.85rem;
-                flex: 1;
+                flex: 1; /* 세 버튼이 공간을 똑같이 나누어 가집니다 */
+                padding: 14px 24px;
+                color: #2c3e50;
+                border: 3px solid #2c3e50;
+                border-radius: 12px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+                display: flex;
+                align-items: center;
                 justify-content: center;
+                gap: 6px;
+            }
+
+            .guide-trigger-btn {
+                background-color: #ffeaa7;
+                box-shadow: 0 5px 0 #2c3e50;
+            }
+            .guide-trigger-btn:hover { background-color: #fdcb6e; }
+        
+            .shop-trigger-btn {
+                background-color: #fab1a0;
+                box-shadow: 0 5px 0 #2c3e50;
+            }
+            .shop-trigger-btn:hover { background-color: #ff7675; }
+
+            .theme-toggle-btn {
+                background-color: #a29bfe; /* 감각적인 레트로 보라색 적용 */
+                box-shadow: 0 5px 0 #2c3e50;
+            }
+            .theme-toggle-btn:hover { background-color: #6c5ce7; color: white; }
+
+        /* 클릭 시 꾹 눌리는 물리 효과 동기화 */
+            .guide-trigger-btn:active, .shop-trigger-btn:active, .theme-toggle-btn:active {
+                transform: translateY(5px);
+                box-shadow: none;
             }
         }
         /* A/B 버튼 없는 깔끔한 미니멀 레트로 스피커 홀/그립 데코 */
-        .left-controller, .right-controller, .theme-toggle-btn {
+        .left-controller, .right-controller {
             display: flex;
             flex-direction: column;
             gap: 6px;
