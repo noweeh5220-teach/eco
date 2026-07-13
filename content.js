@@ -22,3 +22,13 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
     } catch (err) {
     }
 });
+
+// 🌓 웹페이지 버튼 신호를 가로채서 background.js로 토스
+window.addEventListener("message", (event) => {
+    if (event.data && event.data.source === "eco-gochi-page" && event.data.type === "COMMAND_TOGGLE_THEME") {
+        chrome.runtime.sendMessage({ 
+            action: "TOGGLE_THEME_OVERRIDE", 
+            requestedDarkMode: event.data.requestedDarkMode
+        });
+    }
+});
