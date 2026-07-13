@@ -196,10 +196,13 @@
             
             /* 9. 하단 버튼 배치 최적화 */
             .bottom-utility-area {
-                gap: 8px;
-                width: 95vw;
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                width: 100%;
+                max-width: 1350px;
             }
-            .guide-trigger-btn, .shop-trigger-btn {
+            .guide-trigger-btn, .shop-trigger-btn, .theme-toggle-btn{
                 padding: 8px 10px;
                 font-size: 0.85rem;
                 flex: 1;
@@ -207,7 +210,7 @@
             }
         }
         /* A/B 버튼 없는 깔끔한 미니멀 레트로 스피커 홀/그립 데코 */
-        .left-controller, .right-controller {
+        .left-controller, .right-controller, .theme-toggle-btn {
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -754,8 +757,7 @@
 
         <div class="bottom-utility-area">
             <button class="guide-trigger-btn" onclick="openGuideModal()">패널티 안내서 보기</button>
-            <button class="shop-trigger-btn" onclick="openShopModal()"> 상점 열기</button>
-            <button class="theme-toggle-btn" id="manualThemeBtn" onclick="toggleExtensionTheme()">테마 전환</button>
+            <button class="shop-trigger-btn" onclick="openShobottom-ut" onclick="toggleExtensionTheme()"> 테마 전환</button>
         </div>
     </div>
 
