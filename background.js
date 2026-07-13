@@ -57,6 +57,8 @@ async function broadcastNavData() {
             chrome.tabs.sendMessage(activeTab.id, {
                 action: "UPDATE_STATUS",
                 zombieTabCount: zombieCount
+            }, (response) => {
+                if (chrome.runtime.lastError) return;
             });
         } catch (e) {
             // 콘텐트 스크립트 연결 대기 예외 처리
