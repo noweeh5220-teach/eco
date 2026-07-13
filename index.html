@@ -866,10 +866,29 @@
                 zombieCountTextEl.style.color = currentZombieCount >= 5 ? "#e74c3c" : "#2c3e50";
                 themeTextEl.textContent = extensionDarkMode ? "DARK " : "LIGHT ";
 
+                extensionDarkMode = messageData.isDarkMode === true;
+                themeTextEl.textContent = extensionDarkMode ? "DARK 🌙" : "LIGHT ☀️";
+                
+                // 수동 전환 시 웹사이트 전체 배경색도 즉각 피드백 변경
+                document.documentElement.style.setProperty('--bg-color', extensionDarkMode ? '#2f3640' : '#e3ece6');
+                
                 renderGame();
             }
         });
 
+        function toggleExtensionTheme() {
+            if (isGameOver) return;
+            
+            // 현재 상태의 반대값을 타겟 모드로 설정
+            const targetMode = !extensionDarkMode;
+            
+            // content.js가 감지할 수 있도록 브라우저 창에 메시지 발신
+            window.postMessage({
+                source: "eco-gochi-page",
+                type: "COMMAND_TOGGLE_THEME",
+                requestedDarkMode: targetMode
+            }, "*");
+        }
         // 2. 모달 가시성 관리 서브루틴
         function openGuideModal() { infoModalEl.style.display = 'flex'; }
         function closeGuideModal() { infoModalEl.style.display = 'none'; }
