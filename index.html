@@ -199,7 +199,7 @@
                 gap: 8px;
                 width: 95vw;
             }
-            .guide-trigger-btn, .shop-trigger-btn, .theme-toggle-btn{
+            .guide-trigger-btn, .shop-trigger-btn, .theme--btn{
                 padding: 14px 28px;
                 color: #2c3e50;
                 border: 3px solid #2c3e50;
@@ -225,14 +225,14 @@
             }
             .shop-trigger-btn:hover { background-color: #ff7675; }
 
-            .theme-toggle-btn {
+            .theme--btn {
                 background-color: #a29bfe; /* 감각적인 레트로 보라색 적용 */
                 box-shadow: 0 5px 0 #2c3e50;
             }
-            .theme-toggle-btn:hover { background-color: #6c5ce7; }
+            .theme--btn:hover { background-color: #6c5ce7; }
 
         /* 클릭 시 꾹 눌리는 물리 효과 동기화 */
-            .guide-trigger-btn:active, .shop-trigger-btn:active, .theme-toggle-btn:active {
+            .guide-trigger-btn:active, .shop-trigger-btn:active, .theme--btn:active {
                 transform: translateY(5px);
                 box-shadow: none;
             }
@@ -461,7 +461,7 @@
             transform: translateY(3px);
             box-shadow: none;
         }
-        .theme-toggle-btn:active{
+        .theme--btn:active{
             style="padding: 14px 28px;
             color: #2c3e50; 
             border: 3px solid #2c3e50;
@@ -786,7 +786,7 @@
         <div class="bottom-utility-area">
             <button class="guide-trigger-btn" onclick="openGuideModal()">패널티 안내서 보기</button>
             <button class="shop-trigger-btn" onclick="openShopbottom()">상점</button>
-            <button class="theme-toggle-btn" onclick="toggleExtensionTheme()"> 테마 전환</button>
+            <button class="theme--btn" onclick="ExtensionTheme()"> 테마 전환</button>
         </div>
     </div>
 
